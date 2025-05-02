@@ -10,7 +10,7 @@
 
 или с удаленного репозитория с помощью команды
 
-`cookiecutter https://github.com/gpncr-repos/PythonProjectTemplates`
+`cookiecutter https://github.com/vladushka2000/PythonProjectTemplates`
 
 После ввода команды пользователю будет предложено выбрать нужные ему библиотеки реализации.
 

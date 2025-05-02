@@ -2,7 +2,7 @@
 name = "bff"
 version = "0.1.0"
 description = ""
-authors = ["gpn_team"]
+authors = ["vladushka2000"]
 readme = "README.md"
 
 [build-system]

@@ -9,13 +9,13 @@ from repositories import asyncpg_repository
 
 class AsyncpgUOW(base_uow.BaseAsyncUOW):
     """
-    Синхронный UOW для работы с синхронными Psycopg-репозиториями
+    Асинхронный UOW для работы с асинхронными Psycopg-репозиториями
     """
 
     def __init__(self, repository: asyncpg_repository.AsyncpgRepository) -> None:
         """
         Инициализировать переменные
-        :param repository: синхронный репозиторий Psycopg
+        :param repository: асинхронный репозиторий Psycopg
         """
 
         self.repository = repository

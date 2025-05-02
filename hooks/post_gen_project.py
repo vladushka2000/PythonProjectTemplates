@@ -35,7 +35,7 @@ class DependenciesCreator:
                 name = "{{ cookiecutter.service_name }}"
                 version = "0.1.0"
                 description = ""
-                authors = ["gpn_team"]
+                authors = ["vladushka2000"]
                 readme = "README.md"
 
                 [build-system]
@@ -50,6 +50,8 @@ class DependenciesCreator:
                 dependency-injector = "^4.41.0"
                 pre-commit = "^4.0.1"
                 python-json-logger = "^2.0.7"
+                pytest = "^8.3.5"
+                pytest-asyncio = "^0.26.0"
             """
         )
 
