@@ -1,4 +1,7 @@
+import asyncio
+
 import aio_pika
+
 from config import rabbitmq_config
 from interfaces import base_message_broker, base_proxy
 
@@ -12,6 +15,7 @@ class InstanceConnectionBase(base_proxy.ConnectionProxy):
 
     _connection: aio_pika.abc.AbstractRobustConnection | None = None
     _connection_users = set()
+    _connection_lock = asyncio.Lock()
 
     @classmethod
     async def _set_connection(cls) -> None:
@@ -54,8 +58,9 @@ class InstanceConnectionBase(base_proxy.ConnectionProxy):
 
         self._add_connection_user(user)
 
-        if self._connection is None:
-            await self._set_connection()
+        async with self._connection_lock:
+            if self._connection is None:
+                await self._set_connection()
 
         return self._connection
 
@@ -74,6 +79,7 @@ class InstanceConnectionBase(base_proxy.ConnectionProxy):
 
         if len(self._connection_users) == 0:
             await self._connection.close()
+            self._connection = None
 
 
 class AsyncRMQProducerConnectionProxy(InstanceConnectionBase):
