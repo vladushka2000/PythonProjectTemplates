@@ -90,7 +90,8 @@ class AlchemyAsyncUOW(base_uow.BaseAsyncUOW):
         :return: объект UOW
         """
 
-        self._transaction = await self.repository.connection_proxy.connect().begin()
+        self._transaction = await self.repository.connection_proxy.connect()
+        self._transaction.begin()
         self._is_transaction_commited = False
 
         return self
